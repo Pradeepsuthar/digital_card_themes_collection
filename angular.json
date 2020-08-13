@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "digital-card-app"
+    }
+  },
+  "defaultProject": "digital-card-app",
+  "cli": {
+    "analytics": "c45cd41a-17eb-4bc7-a9a6-054147f2bcf8"
+  }
 }

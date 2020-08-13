@@ -1,1 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+/* Global Styles */
+:root {
+    --primary: #0056B3 !important;
+    --primary-hvr: #03458b !important;
+    --dark-color: #141414;
+    --light-color: #f4f4f4;
+    --custom-font-family: 'Poppins', sans-serif;
+    // --hesley-font-family: 'Jost', sans-serif;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.text-primary {
+    color: var(--primary) !important;
+}
+.text-primary:hover {
+    color: var(--primary-hvr) !important;
+}
+.text-primary:focus {
+    color: var(--primary-hvr) !important;
+}
+.btn-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+.btn-primary:hover {
+    background-color: var(--primary-hvr) !important;
+    border-color: var(--primary-hvr) !important;
+    outline: none !important;
+}
+.btn-primary:focus {
+    background-color: var(--primary-hvr) !important;
+    border-color: var(--primary-hvr) !important;
+    outline: none !important;
+}
+.btn-outline-primary {
+    background-color: transparent !important;
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
+}
+.btn-outline-primary:hover {
+    background-color: var(--primary) !important;
+    border-color: var(--primary-hvr) !important;
+    color: #fff !important;
+    outline: none !important;
+}
+.btn-outline-primary:focus {
+    background-color: var(--primary) !important;
+    border-color: var(--primary-hvr) !important;
+    color: #fff !important;
+    outline: none !important;
+}
+/* Background colors */
+.bg-dark {
+    background-color: var(--dark-color) !important;
+    color: var(--light-color) !important;
+}
+body {
+    font-family: var(--custom-font-family);
+    -webkit-font-smoothing: antialiased;
+}
