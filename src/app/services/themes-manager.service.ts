@@ -197,5 +197,9 @@ setDomain(){
     });
   }
 
+  makeEnquiry(name:string,contact:string,message:string){
+    return this.db.collection("enquiry").add({name,contact,message})
+  }
+
 
 }
