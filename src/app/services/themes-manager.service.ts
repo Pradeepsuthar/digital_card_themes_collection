@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Title, Meta } from '@angular/platform-browser';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +14,7 @@ export class ThemesManagerService {
   products=[]
   videos=[]
   id:any
-  constructor(public db:AngularFirestore){
+  constructor(public db:AngularFirestore,private title: Title, private meta: Meta){
     this.domainName="https://bhaveshgoswami0223.web.app/"
     //this.setDomain() ;
     if(this.domainName){
@@ -64,6 +65,7 @@ setDomain(){
           console.log("userdata",userdata)
           this.data = userdata[0]
           this.id = this.data.id
+          this.updateMeta()
           this.setGallery()
           this.setProducts()
           this.setServices()
@@ -141,6 +143,16 @@ setDomain(){
   setAll(){
     this.setData()
     
+  }
+
+  setMetaData(){
+    
+  }
+
+  updateMeta() {
+    this.meta.updateTag({ name: 'description', content: this.data.metaTags.description })
+    this.title.setTitle(this.data.metaTags.title);
+    // code to set other meta tags
   }
 
 
