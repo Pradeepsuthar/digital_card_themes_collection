@@ -17,8 +17,10 @@ export class ThemesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._themeService.changeDomain("pradeep")
-    //this._themeService.getAllThemes()
+    console.log(this.route.snapshot.params["domain"])
+    if(this.route.snapshot.params["domain"]){
+      this._themeService.changeDomain(this.route.snapshot.params["domain"])
+    }
   }
 
 }
