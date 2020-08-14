@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   title = 'digital-card-app';
+
   ngOnInit(){
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";

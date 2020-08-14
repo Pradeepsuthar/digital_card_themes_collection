@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./default-theme.component.scss']
 })
 export class DefaultThemeComponent implements OnInit {
+  // map vars start
+  center = {lat: 24, lng: 12};
+  markerOptions = {draggable: false};
+  markerPositions: google.maps.LatLngLiteral[] = [{lat:24,lng:12}];
+  zoom = 4;
+  display?: google.maps.LatLngLiteral;
+  // map vars end
 
   products:any=[
     {

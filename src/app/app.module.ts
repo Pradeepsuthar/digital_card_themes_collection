@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
-
+import {GoogleMapsModule} from '@angular/google-maps';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,9 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
     ScrollToModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    GoogleMapsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
