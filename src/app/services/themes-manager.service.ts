@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Title, Meta } from '@angular/platform-browser';
-import { domain } from 'process';
+import { MetaTag } from '../models/meta.model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +16,13 @@ export class ThemesManagerService {
   products=[]
   videos=[]
   id:any
+  private urlMeta: string = "og:url";
+  private titleMeta: string = "og:title";
+  private descriptionMeta: string = "og:description";
+  private imageMeta: string = "og:image";
+  private secureImageMeta: string = "og:image:secure_url";
+  private twitterTitleMeta: string = "twitter:text:title";
+  private twitterImageMeta: string = "twitter:image";
   constructor(public db:AngularFirestore,private title: Title, private meta: Meta){
     this.domainName="https://bhaveshgoswami0223.web.app/"
     //this.setDomain() ;
@@ -66,7 +74,7 @@ setDomain(){
           console.log("userdata",userdata)
           this.data = userdata[0]
           this.id = this.data.id
-          this.updateMeta()
+          this.setMetaTags()
           this.setGallery()
           this.setProducts()
           this.setServices()
@@ -150,15 +158,43 @@ setDomain(){
     
   }
 
-  updateMeta() {
+/*   updateMeta() {
     this.meta.updateTag({ name: 'description', content: this.data.metaTags.description })
+    this.meta.updateTag({ name: 'og:image', content: this.data.metaTags.description })
     this.title.setTitle(this.data.metaTags.title);
+    
     // code to set other meta tags
-  }
+  } */
 
   changeDomain(domainname){
     this.domainName = domainname
     this.setAll()
+  }
+
+  public setMetaTags(): void {
+    var imageUrl = this.data.brandLogo;
+    var tags = [
+      new MetaTag(this.urlMeta, window.location.href, true),
+      new MetaTag(this.titleMeta, this.data.metaTags.title, true),
+      new MetaTag(this.descriptionMeta, this.data.metaTags.description, true),
+      new MetaTag(this.imageMeta, imageUrl, true),
+      new MetaTag(this.secureImageMeta, imageUrl, true),
+      new MetaTag(this.twitterTitleMeta, this.data.metaTags.title, false),
+      new MetaTag(this.twitterImageMeta, imageUrl, false)
+    ];
+    this.title.setTitle(this.data.metaTags.title);
+    this.setTags(tags);
+  }
+
+  private setTags(tags: MetaTag[]): void {
+    tags.forEach(siteTag => {
+      const tag = siteTag.isFacebook ?  this.meta.getTag(`property='${siteTag.name}'`) : this.meta.getTag(`name='${siteTag.name}'`);
+      if (siteTag.isFacebook) {
+        this.meta.updateTag({ property: siteTag.name, content: siteTag.value });
+      } else {
+        this.meta.updateTag({ name: siteTag.name, content: siteTag.value });
+      }
+    });
   }
 
 
