@@ -10,7 +10,7 @@ import { FirstThemeComponent } from './themes/first-theme/first-theme.component'
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-
+import { YouTubePlayerModule } from '@angular/youtube-player';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 @NgModule({
@@ -26,7 +26,8 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
     AppRoutingModule,
     ScrollToModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    YouTubePlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
