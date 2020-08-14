@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Title, Meta } from '@angular/platform-browser';
+import { domain } from 'process';
 @Injectable({
   providedIn: 'root'
 })
@@ -153,6 +154,11 @@ setDomain(){
     this.meta.updateTag({ name: 'description', content: this.data.metaTags.description })
     this.title.setTitle(this.data.metaTags.title);
     // code to set other meta tags
+  }
+
+  changeDomain(domainname){
+    this.domainName = domainname
+    this.setAll()
   }
 
 
