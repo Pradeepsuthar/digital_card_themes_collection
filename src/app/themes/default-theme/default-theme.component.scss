@@ -7,7 +7,7 @@
     backdrop-filter: saturate(180%) blur(20px);
 }
 .site-header a {
-    color: #999;
+    color: #FAFBFC;
     transition: ease-in-out color .30s;
     cursor: pointer;
 }
@@ -16,3 +16,119 @@
     text-decoration: none;
 }
 
+
+.website__body{
+    background-color: #fff;
+}
+.jumbotron{
+    background-color: transparent;
+}
+
+/* Product  Card */
+.card__lable {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+    display: inline-flex;
+    color: rgb(255, 255, 255);
+    background-color: var(--primary);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 15px;
+    /* border-bottom-right-radius: 3px; */
+    /* border-top-right-radius: 3px; */
+    border-radius: 50%;
+}
+
+.mrp{
+    text-decoration: line-through;
+    color: gray;
+}
+
+
+/* posters */
+.row_posters{
+	display: flex;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	padding: 20px;
+}
+.row_posters::-webkit-scrollbar{
+    display: block;
+    cursor: pointer;
+    height: 5px;
+}
+/* Track */
+.row_posters::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px lightgray; 
+  }
+   
+/* Handle */
+.row_posters::-webkit-scrollbar-thumb {
+    background: var(--primary); 
+}
+
+.row_posters img{
+	width: 100%;
+	object-fit: contain;
+	max-height: 200px;
+	margin-right: 10px;
+    transition: transform 500ms;
+    border: none;
+    border-radius: 5px;
+}
+.row_posters img:hover{
+	cursor: pointer;
+	transform: scale(1.08);
+}
+
+@media(max-width:720px){
+    .row_posters::-webkit-scrollbar{
+        display: none;
+    }
+}
+
+// Form
+
+input[type='text'],
+input[type='email'] {
+    width: 100%;
+    padding: 10px 20px 10px;
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    font-weight: lighter;
+}
+input[type='text']:hover {
+    border: 1px solid var(--primary-hvr);
+}
+input[type='email']:hover {
+    border: 1px solid var(--primary-hvr);
+}
+textarea {
+    width: 100%;
+    padding: 10px 20px 10px;
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    font-weight: lighter;
+}
+textarea:hover {
+    border: 1px solid var(--primary-hvr);
+}
+.custom-btn {
+    border: 1px solid var(--primary);
+    border-radius: 0;
+    padding: 10px 50px 10px;
+    background-color: transparent;
+    color: var(--primary);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.custom-btn:hover {
+    /* background-color: #fff;
+    color: #696969;
+    border: 1px solid #696969; */
+    background-color: var(--primary);
+    color: #fff;
+    border: 1px solid #fff;
+}
