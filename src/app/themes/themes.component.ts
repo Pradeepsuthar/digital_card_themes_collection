@@ -15,7 +15,7 @@ export class ThemesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._themeService.getAllThemes()
+    //this._themeService.getAllThemes()
   }
 
 }
