@@ -1,206 +1,203 @@
 <nav class="site-header sticky-top py-1">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2" href="#" aria-label="Product">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-                stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
-                viewBox="0 0 24 24" focusable="false">
-                <title>Product</title>
-                <circle cx="12" cy="12" r="10" />
-                <path
-                    d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
-            </svg>
+            <img class="img-fluid" [src]="_themeService?.data?.brandLogo" alt="" width="50" height="50">
         </a>
         <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#home'">Home</a>
-        <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#services'">Services</a>
-        <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#photos'">Photos</a>
-        <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#videos'">Videos</a>
-        <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#products'">Products</a>
+        <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#services'"
+            *ngIf="_themeService?.services.length>0">Services</a>
+        <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#photos'"
+            *ngIf="_themeService?.gallery.length>0">Photos</a>
+        <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#videos'"
+            *ngIf="_themeService?.videos.length>0">Videos</a>
+        <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#products'"
+            *ngIf="_themeService?.products.length>0">Products</a>
         <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#aboutus'">About Us</a>
         <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#contactus'">Contact Us</a>
     </div>
 </nav>
 
 
-<div class="website__body">
-    <!-- Section-home -->
-    <section id="home" class="jumbotron jumbotron-fluid my-0 border pt-0 pt-md-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-5 col-lg-6 order-md-1 my-4 my-md-0">
-                    <!-- Image -->
-                    <img src="https://pradeepsuthar.github.io/hesley_website_australia/assets/images/placeholder-500x500.png" class="img-fluid mw-md-150 mw-lg-130 mb-6 mb-md-0"
-                        alt="" data-aos="fade-up" data-aos-delay="100">
-                </div>
-                <div class="col-12 col-md-7 col-lg-6 order-md-2 pb-4 pt-md-3 mt-md-3 pt-lg-5 mt-lg-5"
-                    data-aos="fade-up">
-                    <!-- Heading -->
-                    <h1 class="text-center text-md-left text-uppercase d-none d-lg-block">
-                        smart nutrition scale
-                    </h1>
-                    <h2 class="text-center text-md-left text-uppercase mt-md-5 d-block d-lg-none">
-                        smart nutrition scale
-                    </h2>
 
-                    <p class="lead d-none d-md-block text-justify">
-                        Hesley Group are one of the UK's leading providers of specialist autism support, providing
-                        specialist autism schools and autism care homes...
-                    </p>
-                    <!-- Buttons -->
-                    <div class="text-center text-md-left mt-4">
-                        <a href="overview.html" class="btn btn-primary shadow lift mr-1">
-                            Learn More <span class="d-none d-md-inline"><svg width="1em" height="1em"
-                                    viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg></span>
-                            <!-- <i class="fe fe-arrow-right d-none d-md-inline ml-3"></i> -->
-                        </a>
+<div class="website__body ">
+    <!-- Section-home -->
+    <section id="home" class="jumbotron jumbotron-fluid m-0 p-0" *ngIf="_themeService?.carousel.length>0">
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <ng-container *ngFor="let slides of _themeService?.carousel; let i = index">
+                    <div class="carousel-item active" *ngIf="i==0">
+                        <img [src]="slides?.imgUrl" class="d-block w-100 img-fluid" alt="...">
                     </div>
-                </div>
+                    <div class="carousel-item">
+                        <img [src]="slides?.imgUrl" class="d-block w-100 img-fluid" alt="...">
+                    </div>
+                </ng-container>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </section>
     <!-- Section-Services -->
-    <section id="services" class="jumbotron jumbotron-fluid my-0 border">
+    <section id="services" class="jumbotron jumbotron-fluid my-0" *ngIf="_themeService?.services.length>0">
         <div class="container">
             <div class="header text-center">
                 <h1 class="d-none d-md-block mb-4"><b>Services</b></h1>
                 <h4 class="d-block d-md-none"><b>Services</b></h4>
             </div>
-            <div class="text-center mt-md-5 pt-md-3">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-                    <div class="col px-md-5">
-                        <div>
-                            <div class="text-center">
-                                <img src="https://pradeepsuthar.github.io/hesley_website_australia/assets/images/quote.png" width="50" alt="" class="mb-md-4">
-                                <p>Design is evolutinary process, and filter text is just one tool in your
-                                    progress-pushing arsenal</p>
-                            </div>
-                            <div class="test_info mt-md-5">
-                                <img src="https://pradeepsuthar.github.io/hesley_website_australia/assets/images/avatar.webp" width="40" alt="">
-                                <p class="mt-2 mb-0"><b>Inverness McKenzie</b></p>
-                                <p class="mt-0">@inverness_mcKenzie</p>
-                            </div>
+            <ng-container *ngFor="let service of _themeService?.services; let i = index">
+                <div class="my-4">
+                    <div class="row">
+                        <div class="col-12 col-md-5 col-lg-6" [ngClass]="i%2==0?'order-md-1':'order-md-2'">
+                            <!-- Image -->
+                            <img [src]="service?.imgUrl" class="img-fluid mw-md-150 mw-lg-130 mb-6 mb-md-0" alt=""
+                                data-aos="fade-up" data-aos-delay="100">
                         </div>
-                    </div>
-                    <div class="col px-md-5">
-                        <div>
-                            <div class="text-center">
-                                <img src="https://pradeepsuthar.github.io/hesley_website_australia/assets/images/quote.png" width="50" alt="" class="mb-md-4">
-                                <p>Design is evolutinary process, and filter text is just one tool in your
-                                    progress-pushing arsenal</p>
-                            </div>
-                            <div class="test_info mt-md-5">
-                                <img src="https://pradeepsuthar.github.io/hesley_website_australia/assets/images/avatar.webp" width="40" alt="">
-                                <p class="mt-2 mb-0"><b>Inverness McKenzie</b></p>
-                                <p class="mt-0">@inverness_mcKenzie</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col px-md-5">
-                        <div>
-                            <div class="text-center">
-                                <img src="https://pradeepsuthar.github.io/hesley_website_australia/assets/images/quote.png" width="50" alt="" class="mb-md-4">
-                                <p>Design is evolutinary process, and filter text is just one tool in your
-                                    progress-pushing arsenal</p>
-                            </div>
-                            <div class="test_info mt-md-5">
-                                <img src="https://pradeepsuthar.github.io/hesley_website_australia/assets/images/avatar.webp" width="40" alt="">
-                                <p class="mt-2 mb-0"><b>Inverness McKenzie</b></p>
-                                <p class="mt-0">@inverness_mcKenzie</p>
-                            </div>
+                        <div class="col-12 col-md-7 col-lg-6" data-aos="fade-up" [ngClass]="i%2==0?'order-md-2':'order-md-1'">
+                            <!-- Heading -->
+                            <h1 class="text-center text-md-left text-uppercase d-none d-lg-block">
+                                {{service?.title}}
+                            </h1>
+                            <h2 class="text-center text-md-left text-uppercase mt-md-5 d-block d-lg-none">
+                                {{service?.title}}
+                            </h2>
+
+                            <p class="lead d-none d-md-block text-justify">
+                                {{service?.desc}}
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </ng-container>
         </div>
     </section>
     <!-- Section-photos -->
-    <section id="photos" class="jumbotron jumbotron-fluid my-0 border">
+    <section id="photos" class="jumbotron jumbotron-fluid my-0" *ngIf="_themeService?.gallery.length>0">
         <div class="header text-center">
             <h1 class="d-none d-md-block mb-4"><b>Image Gallery</b></h1>
             <h4 class="d-block d-md-none"><b>Image Gallery</b></h4>
         </div>
         <div class="container">
-            <div class="mb-3" *ngIf="photoGallry">
+            <div class="mb-3">
                 <div class="row_posters">
-                    <ng-container *ngFor="let imgs of photoGallry;">
-                        <img [src]="imgs?.imgUrl" class="img-fluid" alt="">
+                    <ng-container *ngFor="let imgs of _themeService?.gallery;">
+                        <img [src]="imgs?.imgUrl" class="img-fluid img" alt="">
                     </ng-container>
                 </div>
             </div>
         </div>
     </section>
     <!-- Section-videos -->
-    <section id="videos" class="jumbotron jumbotron-fluid my-0 border">
+    <section id="videos" class="jumbotron jumbotron-fluid my-0" *ngIf="_themeService?.videos.length>0">
+        <div class="header text-center">
+            <h1 class="d-none d-md-block mb-4"><b>Video Gallery</b></h1>
+            <h4 class="d-block d-md-none"><b>Video Gallery</b></h4>
+        </div>
         <div class="container">
-            <h1 class="display-4">Videos</h1>
+            <!-- <div class="mb-3">
+                <div class="row_posters">
+                    <ng-container *ngFor="let videos of _themeService?.videos;">
+                        <youtube-player [videoId]="videos?.youTubeLink.slice(16,videos?.youTubeLink.length)"
+                            suggestedQuality="highres" class="video-player" [width]="videoPlayerwidthSize"
+                            [height]="videoPlayerheightSize">
+                        </youtube-player>
+                    </ng-container>
+                </div>
+            </div> -->
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                <ng-container *ngFor="let videos of _themeService?.videos;">
+                <div class="col">
+                        <youtube-player [videoId]="videos?.youTubeLink.slice(16,videos?.youTubeLink.length)"
+                        suggestedQuality="highres" class="video-player img-fluid" [width]="videoPlayerwidthSize"
+                        [height]="videoPlayerheightSize">
+                    </youtube-player>
+                </div>
+            </ng-container>
+              </div>
         </div>
     </section>
     <!-- Section-products -->
-    <section id="products" class="jumbotron jumbotron-fluid my-0 border">
+    <section id="products" class="jumbotron jumbotron-fluid my-0" *ngIf="_themeService?.products.length>0">
         <div class="header text-center">
             <h1 class="d-none d-md-block mb-4"><b>Our Products</b></h1>
             <h4 class="d-block d-md-none"><b>Our Products</b></h4>
         </div>
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-              <div class="col mb-2 mb-md-4" *ngFor="let product of products;">
-                <div class="card rounded-0">
-                    <div>
-                        <img [src]="product?.productImgUrl" alt="" width="100%" height="300">
-                        <span class="card__lable" *ngIf="product.sale">Sale!</span>
-                    </div>
-                    <div class="card-body text-center pt-2 pb-0">
-                        <h4 class="card-title text-primary text-uppercase">{{product?.productName}}</h4>
-                        <p><span class="mr-3 mrp"><b>Rs.{{product?.mrpPrice}}</b></span><span class="text-success"><b>Rs.{{product?.salePrice}}</b></span></p>
+                <div class="col mb-2 mb-md-4" *ngFor="let product of _themeService?.products;">
+                    <div class="card rounded-0">
+                        <div>
+                            <img [src]="product?.imgUrl" alt="" class="product__img">
+                            <!-- <span class="card__lable">Sale!</span> -->
+                        </div>
+                        <div class="card-body py-2 pb-0">
+                            <h5 class="card-title text-primary text-uppercase my-0" [title]="product?.itemName">
+                                <small><b>{{product?.itemName}}</b></small></h5>
+                            <p class="text-muted my-0 text-justify"><small>{{product?.itemDescription.slice(0,50)}}</small></p>
+                            <p class="my-0"><span class="mr-3 mrp my-0"><b>Rs.{{product?.itemPrice}}</b></span></p>
+                            <div class="my-2" *ngIf="product?.enquiryLink">
+                                <a href="{{product?.enquiryLink}}" class="btn btn-primary btn-sm btn-block">Enquiry  Now</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
     </section>
     <!-- Section-abooutus -->
-    <section id="aboutus" class="jumbotron jumbotron-fluid my-0 border">
+    <section id="aboutus" class="jumbotron jumbotron-fluid my-0">
         <div class="header text-center">
             <h1 class="d-none d-md-block mb-4"><b>About Us</b></h1>
             <h4 class="d-block d-md-none"><b>About Us</b></h4>
         </div>
         <div class="container">
-            <h4>AMARDEEP GARMENTS SHOP</h4>
-            <p>This is my own Readymade garments shop in pindwara. we provides best fashionable clouths.</p>
+            <ng-container>
+                <!-- Heading -->
+                <h1 class="text-center text-md-left text-uppercase d-none d-lg-block">
+                    {{_themeService?.data.aboutUs.title}}
+                </h1>
+                <h2 class="text-center text-md-left text-uppercase mt-md-5 d-block d-lg-none">
+                    {{_themeService?.data.aboutUs.title}}
+                </h2>
+
+                <div [innerHTML]="_themeService?.data?.aboutUs?.description"></div>
+
+            </ng-container>
         </div>
     </section>
     <!-- Section-contactus -->
-    <section id="contactus" class="jumbotron jumbotron-fluid my-0 border">
+    <section id="contactus" class="jumbotron jumbotron-fluid my-0">
         <div class="header text-center">
             <h1 class="d-none d-md-block mb-4"><b>Contact Us</b></h1>
             <h4 class="d-block d-md-none"><b>Contact Us</b></h4>
         </div>
         <div class="container">
             <!-- FORM -->
-            <form action="#">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col-12 col-md-6">
                         <div class="form-group pb-4">
-                            <input type="text" placeholder="Your Name">
+                            <input type="text" placeholder="Your Name" formControlName="fullName">
                         </div>
                         <div class="form-group pb-4">
-                            <input type="email" placeholder="Your Email">
-                        </div>
-                        <div class="form-group pb-4">
-                            <input type="text" placeholder="Your Phone Number">
+                            <input type="text" placeholder="Your Phone Number" formControlName="mobileNumber">
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <textarea name="message" id="message" cols="30" rows="8"
-                                placeholder="Enter Your Message"></textarea>
+                            <textarea name="message" id="message" cols="30" rows="5"
+                                placeholder="Enter Your Message" formControlName="message"></textarea>
                         </div>
                     </div>
                     <div class="col-12">
-                        <button class="custom-btn">Send a message</button>
+                        <button class="custom-btn" type="submit">Send a message</button>
                     </div>
                 </div>
             </form>
@@ -208,72 +205,79 @@
     </section>
 </div>
 
+<!-- Call Us -->
+<div class="jumbotron jumbotron-fluid my-0 py-0 call__now__section">
+    <div class="d-flex justify-content-center">
+        <div class="whatsapp my-auto">
+            <a href="https://wa.me/{{_themeService?.data?.whatsappNo}}?text=I'm%20interested%20in%20your%20car%20for%20sale">
+                <img src="https://i.pinimg.com/originals/2f/a2/a1/2fa2a1d3789285b9fe42d8fb916bb8a5.png" width="85" alt="" class="img-fluid">
+            </a>
+        </div>
+        <div class="phone my-auto">
+            <a href="tel:{{_themeService?.data?.phoneNo}}">
+                <img src="https://i.pinimg.com/originals/20/b6/86/20b6860e2f5560e6fae086a51051bdbc.gif" width="150" alt="" class="img-fluid">
+            </a>
+        </div>
+    </div>
+</div>
 
 
 <!-- Footer -->
-<footer class="container py-5">
+<footer class="container pt-4 my-md-5 pt-md-5 border-top">
     <div class="row">
-        <div class="col-12 col-md">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-                stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
-                viewBox="0 0 24 24" focusable="false">
-                <title>Product</title>
-                <circle cx="12" cy="12" r="10" />
-                <path
-                    d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
-            </svg>
-            <small class="d-block mb-3 text-muted">&copy; 2017-2020</small>
+      <div class="col-12 col-md">
+        <img class="mb-2" [src]="_themeService?.data?.brandLogo" alt="" width="70" height="70">
+        <small class="d-block mb-3 text-muted">&copy; 2020 {{_themeService?.data?.shopName}}</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Links</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Privacy & Policy</a></li>
+          <li><a class="text-muted" href="#">Contact Us</a></li>
+          <li><a class="text-muted" href="#">About Us</a></li>
+          <li><a class="text-muted" href="#">Terms & Conditions</a></li>
+        </ul>
+
+         <!-- Social links -->
+      <div class="d-none d-md-block">
+        <div class="d-flex justify-content-start">
+          <a href="#" class="mr-3"><img src="assets/Images/facebook-icon.webp" alt="" width="25"></a>
+          <a href="#" class="mr-3"><img src="assets/Images/Instagram_icon.png" alt="" width="25"></a>
+          <a href="#" class="mr-3"><img src="assets/Images/youtube-icon.png" alt="" width="30"></a>
         </div>
-        <div class="col-6 col-md">
-            <h5>Features</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Cool stuff</a></li>
-                <li><a class="text-muted" href="#">Random feature</a></li>
-                <li><a class="text-muted" href="#">Team feature</a></li>
-                <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                <li><a class="text-muted" href="#">Another one</a></li>
-                <li><a class="text-muted" href="#">Last time</a></li>
-            </ul>
-        </div>
-        <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Resource</a></li>
-                <li><a class="text-muted" href="#">Resource name</a></li>
-                <li><a class="text-muted" href="#">Another resource</a></li>
-                <li><a class="text-muted" href="#">Final resource</a></li>
-            </ul>
-        </div>
-        <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Business</a></li>
-                <li><a class="text-muted" href="#">Education</a></li>
-                <li><a class="text-muted" href="#">Government</a></li>
-                <li><a class="text-muted" href="#">Gaming</a></li>
-            </ul>
-        </div>
-        <div class="col-6 col-md">
-            <h5>About</h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Team</a></li>
-                <li><a class="text-muted" href="#">Locations</a></li>
-                <li><a class="text-muted" href="#">Privacy</a></li>
-                <li><a class="text-muted" href="#">Terms</a></li>
-            </ul>
-        </div>
+      </div>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Address</h5>
+        <ul class="list-unstyled text-small">
+          <li>
+            <small class="text-muted">
+              {{_themeService?.data?.address?.area}} <br>
+              {{_themeService?.data?.address?.city}}, {{_themeService?.data?.address?.state}} - ({{_themeService?.data?.address?.zipCode}}). {{_themeService?.data?.address?.country}}
+            </small>
+          </li>
+        </ul>
+        <h5>Conatct Us</h5>
+        <ul class="list-unstyled text-small">
+          <li>
+            <small class="text-muted">
+              Email : <a class="text-muted"  href="mailto:{{_themeService?.data?.email}}">{{_themeService?.data?.email}}</a> <br>
+              Phone No. : <a class="text-muted"  href="tel:{{_themeService?.data?.phoneNo}}">{{_themeService?.data?.phoneNo}}</a> 
+            </small>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6 col-md px-0 mx-0">
+        <google-map height="100%" width="100%" [center]="center" [zoom]="zoom">
+            <map-marker #marker="mapMarker" *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
+                [options]="markerOptions"></map-marker>
+        </google-map>
+      </div>
     </div>
-</footer>
 
-
-<google-map height="400px"
-            width="750px"
-            [center]="center"
-            [zoom]="zoom"
-            >
-  <map-marker #marker="mapMarker"
-              *ngFor="let markerPosition of markerPositions"
-              [position]="markerPosition"
-              [options]="markerOptions"
-              ></map-marker>
-</google-map>
+    <div class="text-center mt-4">
+        <small>
+            Powered by <span><b><a href="https://splixcube.com/" style="color: var(--primary);text-decoration: none;">Splixcube</a></b></span>
+        </small>
+      </div>
+  </footer>
