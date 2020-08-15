@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ThemesManagerService } from 'src/app/services/themes-manager.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -29,25 +29,31 @@ export class DefaultThemeComponent implements OnInit {
     message: new FormControl(''),
   });
 
-  onSubmit(){
-    console.log("Contact Form is",this.contactForm.value)
-    this._themeService.makeEnquiry(this.contactForm.value.fullName,this.contactForm.value.mobileNumber,this.contactForm.value.message)
+  onSubmit() {
+    console.log("Contact Form is", this.contactForm.value)
+    this._themeService.makeEnquiry(this.contactForm.value.fullName, this.contactForm.value.mobileNumber, this.contactForm.value.message)
     this.contactForm.reset()
   }
 
   ngOnInit(): void {
-    console.log("Width : ",window.innerWidth)
-    console.log("Type Width : ",typeof(window.innerWidth))
+    console.log("Width : ", window.innerWidth)
+    console.log("Type Width : ", typeof (window.innerWidth))
     if (window.innerWidth > 1020) {
       this.videoPlayerwidthSize = 350;
       this.videoPlayerheightSize = 200;
-    }else if (window.innerWidth > 320) {
+    } else if (window.innerWidth > 320) {
       this.videoPlayerwidthSize = 350;
       this.videoPlayerheightSize = 200;
-    }else{
+    } else {
       this.videoPlayerwidthSize = 260;
       this.videoPlayerheightSize = 200;
     }
+
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    console.log("My updated screen size",window.innerWidth)
   }
 
 }

@@ -1,4 +1,4 @@
-<nav class="site-header sticky-top py-1">
+<!-- <nav class="site-header sticky-top py-1">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
         <a class="py-2" href="#" aria-label="Product">
             <img class="img-fluid" [src]="_themeService?.data?.brandLogo" alt="" width="50" height="50">
@@ -15,11 +15,38 @@
         <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#aboutus'">About Us</a>
         <a class="py-2 d-none d-md-inline-block" [ngxScrollTo]="'#contactus'">Contact Us</a>
     </div>
-</nav>
+</nav> -->
+
+<div class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow px-md-5">
+        <a class="navbar-brand" *ngIf="!_themeService?.data?.brandLogo; else logoNotAvailable">{{_themeService?.data?.shopName}}</a>
+        <ng-template #logoNotAvailable>
+            <a class="navbar-brand"><img class="img-fluid navbar_brand_logo" [src]="_themeService?.data?.brandLogo" alt=""></a>
+        </ng-template>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-link" [ngxScrollTo]="'#home'">Home</a>
+            <a class="nav-link" [ngxScrollTo]="'#services'"
+                *ngIf="_themeService?.services.length>0">Services</a>
+            <a class="nav-link" [ngxScrollTo]="'#photos'"
+                *ngIf="_themeService?.gallery.length>0">Photos</a>
+            <a class="nav-link" [ngxScrollTo]="'#videos'"
+                *ngIf="_themeService?.videos.length>0">Videos</a>
+            <a class="nav-link" [ngxScrollTo]="'#products'"
+                *ngIf="_themeService?.products.length>0">Products</a>
+            <a class="nav-link" [ngxScrollTo]="'#aboutus'">About Us</a>
+            <a class="nav-link" [ngxScrollTo]="'#contactus'">Contact Us</a>
+          </div>
+        </div>
+      </nav>
+</div>
 
 
 
-<div class="website__body ">
+<div class="website__body">
     <!-- Section-home -->
     <section id="home" class="jumbotron jumbotron-fluid m-0 p-0" *ngIf="_themeService?.carousel.length>0">
 
@@ -48,8 +75,7 @@
     <section id="services" class="jumbotron jumbotron-fluid my-0" *ngIf="_themeService?.services.length>0">
         <div class="container">
             <div class="header text-center">
-                <h1 class="d-none d-md-block mb-4"><b>Services</b></h1>
-                <h4 class="d-block d-md-none"><b>Services</b></h4>
+                <h1 class="title"><b>Services</b></h1>
             </div>
             <ng-container *ngFor="let service of _themeService?.services; let i = index">
                 <div class="my-4">
@@ -61,14 +87,11 @@
                         </div>
                         <div class="col-12 col-md-7 col-lg-6" data-aos="fade-up" [ngClass]="i%2==0?'order-md-2':'order-md-1'">
                             <!-- Heading -->
-                            <h1 class="text-center text-md-left text-uppercase d-none d-lg-block">
+                            <h1 class="mb-md-0 pb-0 pl-0 sub_heading">
                                 {{service?.title}}
                             </h1>
-                            <h2 class="text-center text-md-left text-uppercase mt-md-5 d-block d-lg-none">
-                                {{service?.title}}
-                            </h2>
-
-                            <p class="lead d-none d-md-block text-justify">
+                          
+                            <p class="mt-md-0 pt-md-0 text-desc text-justify">
                                 {{service?.desc}}
                             </p>
                         </div>
@@ -80,8 +103,7 @@
     <!-- Section-photos -->
     <section id="photos" class="jumbotron jumbotron-fluid my-0" *ngIf="_themeService?.gallery.length>0">
         <div class="header text-center">
-            <h1 class="d-none d-md-block mb-4"><b>Image Gallery</b></h1>
-            <h4 class="d-block d-md-none"><b>Image Gallery</b></h4>
+            <h1 class="title"><b>Image Gallery</b></h1>
         </div>
         <div class="container">
             <div class="mb-3">
@@ -96,8 +118,7 @@
     <!-- Section-videos -->
     <section id="videos" class="jumbotron jumbotron-fluid my-0" *ngIf="_themeService?.videos.length>0">
         <div class="header text-center">
-            <h1 class="d-none d-md-block mb-4"><b>Video Gallery</b></h1>
-            <h4 class="d-block d-md-none"><b>Video Gallery</b></h4>
+            <h1 class="title"><b>Video Gallery</b></h1>
         </div>
         <div class="container">
             <!-- <div class="mb-3">
@@ -119,6 +140,13 @@
                         [height]="videoPlayerheightSize">
                     </youtube-player>
                 </div>
+
+
+                <!-- <div class="col mb-2">
+                      <iframe width="100%" [src]="'https://www.youtube.com/embed'+videos?.youTubeLink.slice(16,videos?.youTubeLink.length)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div> -->
+
+
             </ng-container>
               </div>
         </div>
@@ -126,8 +154,7 @@
     <!-- Section-products -->
     <section id="products" class="jumbotron jumbotron-fluid my-0" *ngIf="_themeService?.products.length>0">
         <div class="header text-center">
-            <h1 class="d-none d-md-block mb-4"><b>Our Products</b></h1>
-            <h4 class="d-block d-md-none"><b>Our Products</b></h4>
+            <h1 class="title"><b>Our Products</b></h1>
         </div>
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
@@ -154,18 +181,14 @@
     <!-- Section-abooutus -->
     <section id="aboutus" class="jumbotron jumbotron-fluid my-0">
         <div class="header text-center">
-            <h1 class="d-none d-md-block mb-4"><b>About Us</b></h1>
-            <h4 class="d-block d-md-none"><b>About Us</b></h4>
+            <h1 class="title"><b>About Us</b></h1>
         </div>
         <div class="container">
             <ng-container>
                 <!-- Heading -->
-                <h1 class="text-center text-md-left text-uppercase d-none d-lg-block">
+                <h1 class="sub_heading">
                     {{_themeService?.data.aboutUs.title}}
                 </h1>
-                <h2 class="text-center text-md-left text-uppercase mt-md-5 d-block d-lg-none">
-                    {{_themeService?.data.aboutUs.title}}
-                </h2>
 
                 <div [innerHTML]="_themeService?.data?.aboutUs?.description"></div>
 
@@ -175,8 +198,7 @@
     <!-- Section-contactus -->
     <section id="contactus" class="jumbotron jumbotron-fluid my-0">
         <div class="header text-center">
-            <h1 class="d-none d-md-block mb-4"><b>Contact Us</b></h1>
-            <h4 class="d-block d-md-none"><b>Contact Us</b></h4>
+            <h1 class="title"><b>Contact Us</b></h1>
         </div>
         <div class="container">
             <!-- FORM -->
@@ -196,14 +218,14 @@
                                 placeholder="Enter Your Message" formControlName="message"></textarea>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <button class="custom-btn" type="submit">Send a message</button>
+                    <div class="col-12 col-md-3">
+                        <button class="custom-btn btn-block" type="submit">Send a message</button>
                     </div>
                 </div>
             </form>
         </div>
     </section>
-</div>
+
 
 <!-- Call Us -->
 <div class="jumbotron jumbotron-fluid my-0 py-0 call__now__section">
@@ -220,64 +242,84 @@
         </div>
     </div>
 </div>
-
+</div>
 
 <!-- Footer -->
-<footer class="container pt-4 my-md-5 pt-md-5 border-top">
-    <div class="row">
-      <div class="col-12 col-md">
-        <img class="mb-2" [src]="_themeService?.data?.brandLogo" alt="" width="70" height="70">
-        <small class="d-block mb-3 text-muted">&copy; 2020 {{_themeService?.data?.shopName}}</small>
-      </div>
-      <div class="col-6 col-md">
-        <h5>Links</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="#">Privacy & Policy</a></li>
-          <li><a class="text-muted" href="#">Contact Us</a></li>
-          <li><a class="text-muted" href="#">About Us</a></li>
-          <li><a class="text-muted" href="#">Terms & Conditions</a></li>
-        </ul>
+  <footer class="jumbotron jumbotron-fluid border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md">
+                  <p *ngIf="!_themeService?.data?.brandLogo; else logoNotAvailable"><b>{{_themeService?.data?.shopName}}</b></p>
+                  <ng-template #logoNotAvailable><img class="mb-2 footer_brand_logo" [src]="_themeService?.data?.brandLogo" alt=""></ng-template>
+                  <small class="d-block mb-3 text-muted">&copy; 2020</small>
+                </div>
+                <div class="col-6 col-md">
+                  <h5>Links</h5>
+                  <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Privacy & Policy</a></li>
+                    <li><a class="text-muted" href="#">Contact Us</a></li>
+                    <li><a class="text-muted" href="#">About Us</a></li>
+                    <li><a class="text-muted" href="#">Terms & Conditions</a></li>
+                  </ul>
+          
+                   <!-- Social links -->
+                <div class="d-none d-md-block">
+                  <div class="d-flex justify-content-start">
+                    <a href="{{_themeService?.data?.socialMedia?.facebook}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/facebook_logo.png" alt="" width="25"></a>
+                    <a href="{{_themeService?.data?.socialMedia?.instagram}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/Instagram_logo.webp" alt="" width="25"></a>
+                    <a href="{{_themeService?.data?.socialMedia?.youtube}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/youTube_logo.png" alt="" width="30"></a>
+                    <a href="{{_themeService?.data?.socialMedia?.twitter}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/twitter_logo.png" alt="" width="30"></a>
+                    <a href="{{_themeService?.data?.socialMedia?.linkedin}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/linkedin_logo.png" alt="" width="25"></a>
+                    <a href="{{_themeService?.data?.socialMedia?.pinterest}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/gmail_logo.png" alt="" width="25"></a>
+                    <a href="{{_themeService?.data?.socialMedia?.tiktok}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/Social-media_Tiktok-512.webp" alt="" width="25"></a>
+                  </div>
+                </div>
+                </div>
+                <div class="col-6 col-md">
+                  <h5>Address</h5>
+                  <ul class="list-unstyled text-small">
+                    <li>
+                      <small class="text-muted">
+                        {{_themeService?.data?.address?.area}} <br>
+                        {{_themeService?.data?.address?.city}}, {{_themeService?.data?.address?.state}} - ({{_themeService?.data?.address?.zipCode}}). {{_themeService?.data?.address?.country}}
+                      </small>
+                    </li>
+                  </ul>
+                  <h5>Conatct Us</h5>
+                  <ul class="list-unstyled text-small">
+                    <li>
+                      <small class="text-muted">
+                        Email : <a class="text-muted"  href="mailto:{{_themeService?.data?.email}}">{{_themeService?.data?.email}}</a> <br>
+                        Phone No. : <a class="text-muted"  href="tel:{{_themeService?.data?.phoneNo}}">{{_themeService?.data?.phoneNo}}</a> 
+                      </small>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-6 col-md px-0 mx-0">
+                  <google-map height="100%" width="100%" [center]="center" [zoom]="zoom">
+                      <map-marker #marker="mapMarker" *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
+                          [options]="markerOptions"></map-marker>
+                  </google-map>
+                </div>
+              </div>
 
-         <!-- Social links -->
-      <div class="d-none d-md-block">
-        <div class="d-flex justify-content-start">
-          <a href="#" class="mr-3"><img src="assets/Images/facebook-icon.webp" alt="" width="25"></a>
-          <a href="#" class="mr-3"><img src="assets/Images/Instagram_icon.png" alt="" width="25"></a>
-          <a href="#" class="mr-3"><img src="assets/Images/youtube-icon.png" alt="" width="30"></a>
+              
+    <div class="text-center my-4">
+        <!-- Social links -->
+     <div class="d-block d-md-none">
+       <div class="d-flex justify-content-center">
+         <a href="{{_themeService?.data?.socialMedia?.facebook}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/facebook_logo.png" alt="" width="25"></a>
+         <a href="{{_themeService?.data?.socialMedia?.instagram}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/Instagram_logo.webp" alt="" width="25"></a>
+         <a href="{{_themeService?.data?.socialMedia?.youtube}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/youTube_logo.png" alt="" width="30"></a>
+         <a href="{{_themeService?.data?.socialMedia?.twitter}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/twitter_logo.png" alt="" width="30"></a>
+         <a href="{{_themeService?.data?.socialMedia?.linkedin}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/linkedin_logo.png" alt="" width="25"></a>
+         <a href="{{_themeService?.data?.socialMedia?.pinterest}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/gmail_logo.png" alt="" width="25"></a>
+         <a href="{{_themeService?.data?.socialMedia?.tiktok}}" class="mr-3"><img src="../../../assets/Images/social_media_icons/Social-media_Tiktok-512.webp" alt="" width="25"></a>
+       </div>
+     </div>
+       <small>
+           Powered by <span><b><a href="https://splixcube.com/" style="color: var(--primary);text-decoration: none;">Splixcube</a></b></span>
+       </small>
+     </div>
         </div>
-      </div>
-      </div>
-      <div class="col-6 col-md">
-        <h5>Address</h5>
-        <ul class="list-unstyled text-small">
-          <li>
-            <small class="text-muted">
-              {{_themeService?.data?.address?.area}} <br>
-              {{_themeService?.data?.address?.city}}, {{_themeService?.data?.address?.state}} - ({{_themeService?.data?.address?.zipCode}}). {{_themeService?.data?.address?.country}}
-            </small>
-          </li>
-        </ul>
-        <h5>Conatct Us</h5>
-        <ul class="list-unstyled text-small">
-          <li>
-            <small class="text-muted">
-              Email : <a class="text-muted"  href="mailto:{{_themeService?.data?.email}}">{{_themeService?.data?.email}}</a> <br>
-              Phone No. : <a class="text-muted"  href="tel:{{_themeService?.data?.phoneNo}}">{{_themeService?.data?.phoneNo}}</a> 
-            </small>
-          </li>
-        </ul>
-      </div>
-      <div class="col-6 col-md px-0 mx-0">
-        <google-map height="100%" width="100%" [center]="center" [zoom]="zoom">
-            <map-marker #marker="mapMarker" *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
-                [options]="markerOptions"></map-marker>
-        </google-map>
-      </div>
-    </div>
-
-    <div class="text-center mt-4">
-        <small>
-            Powered by <span><b><a href="https://splixcube.com/" style="color: var(--primary);text-decoration: none;">Splixcube</a></b></span>
-        </small>
-      </div>
   </footer>

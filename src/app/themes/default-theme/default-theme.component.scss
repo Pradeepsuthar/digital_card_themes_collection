@@ -16,18 +16,30 @@
     text-decoration: none;
 }
 
+.nav-link{
+    cursor: pointer;
+}
+
 #carouselExampleControls>.carousel-inner>.carousel-item>img{
     width: 100%;
-    height: 100vh;
+    height: auto;
 }
 
 .website__body{
     background-color: #fff;
-    width: 100%;
-    height: 100%;
+
 }
 .jumbotron{
     background-color: transparent;
+    padding-bottom: 0 !important;
+}
+
+
+.header>.title{
+    color: #222;
+    font-weight: bold;
+    font-size: 35px;
+    margin-bottom: 40px;
 }
 
 /* Product  Card */
@@ -104,6 +116,17 @@
 	// transform: scale(1.08);
 }
 
+.sub_heading{
+    color: #222;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 10px;
+}
+.text-desc{
+    font-size: 18px;
+    color: #696969;
+}
+
 @media(max-width:720px){
     .row_posters::-webkit-scrollbar{
         display: none;
@@ -111,6 +134,21 @@
     #carouselExampleControls>.carousel-inner>.carousel-item>img{
         width: 100%;
         height: 40vh;
+    }
+    .sub_heading{
+        color: #222;
+        font-size: 18px;
+        font-weight: bold;
+        padding-bottom: 0;
+    }
+    .header>.title{
+        color: #222;
+        font-weight: bold;
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+    .text-desc{
+        font-size: 15px;
     }
 }
 
@@ -164,3 +202,14 @@ textarea:hover {
 //     height: 200px;
 //     object-fit: cover;
 // }
+
+.navbar_brand_logo{
+    max-width: 100px;
+}
+.footer_brand_logo{
+    max-width: 100px;
+}
+
+.navbar-toggler:focus{
+    outline: none !important;
+}

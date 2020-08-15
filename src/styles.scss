@@ -64,6 +64,6 @@
     color: var(--light-color) !important;
 }
 body {
-    font-family: var(--custom-font-family);
+    font-family: var(--custom-font-family) !important;
     -webkit-font-smoothing: antialiased;
 }
