@@ -12,7 +12,6 @@ const routes: Routes = [
     {path : "",component:DefaultThemeComponent},
     {path : "1/:page",component:FirstThemeComponent},
   ]},
-  
   {path: '',  redirectTo: '/',  pathMatch: 'full'},
   {path:"**",component:AppComponent}
 ];
