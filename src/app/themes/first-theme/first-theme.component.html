@@ -1,1 +1,6 @@
-<p>first-theme works!</p>
+<p *ngIf="selectedPage=='home'">first-page works!</p>
+
+<p *ngIf="selectedPage=='about'">second-page works!</p>
+
+<a [routerLink]="['../home']" routerLinkActive="router-link-active" >Home</a>
+<a [routerLink]="['../about']" routerLinkActive="router-link-active" >About</a>

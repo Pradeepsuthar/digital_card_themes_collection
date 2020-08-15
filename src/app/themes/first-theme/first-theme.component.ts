@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-first-theme',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./first-theme.component.scss']
 })
 export class FirstThemeComponent implements OnInit {
-
-  constructor() { }
+  selectedPage=null
+  constructor(public route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(res=>{
+      console.log(res)
+      this.selectedPage=res['page']
+    })
   }
 
 }
