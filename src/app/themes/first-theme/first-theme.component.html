@@ -1,15 +1,23 @@
-
-<a [routerLink]="['../home']" routerLinkActive="router-link-active" >Home</a>
-<a [routerLink]="['../about']" routerLinkActive="router-link-active" >About</a>
-
-
+<app-theme1-navigation></app-theme1-navigation>
 
 <ng-container *ngIf="selectedPage=='home'">
-    app-1-home
+    <app-theme1-home></app-theme1-home>
+</ng-container>
+
+<ng-container *ngIf="selectedPage=='products'">
+    <app-theme1-products></app-theme1-products>
 </ng-container>
 
 <ng-container *ngIf="selectedPage=='about'">
-    
+    <app-theme1-about></app-theme1-about>
 </ng-container>
 
-// footer
+<ng-container *ngIf="selectedPage=='contact'">
+    <app-theme1-contact></app-theme1-contact>
+</ng-container>
+
+<ng-container *ngIf="selectedPage=='imgGallery'">
+    <app-theme1-image-gallery></app-theme1-image-gallery>
+</ng-container>
+
+<app-theme1-footer></app-theme1-footer>

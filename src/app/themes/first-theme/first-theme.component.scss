@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+/* Global Styles */
+:root {
+    --theme1-primary: #CB202D !important;
+    --theme1-primary-hvr: #c01120 !important;
+    --theme1-dark-color: #141414;
+    --theme1-light-color: #f4f4f4;
+    --theme1-custom-font-family: 'Poppins', sans-serif;
+    // --hesley-font-family: 'Jost', sans-serif;
+}
+
+*{
+    font-family: 'Poppins', sans-serif !important;
+}

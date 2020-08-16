@@ -1,0 +1,56 @@
+.image__gallery__container{
+    display: grid;
+    grid-template-columns: repeat(3, 0.5fr);
+    grid-template-rows: auto;
+    grid-gap: 5px;
+}
+
+.image__gallery__container>.gallery__img{
+    overflow: hidden;
+}
+
+.image__gallery__container>.gallery__img>a>img{
+    transition:  0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    cursor: pointer;
+}
+.image__gallery__container>.gallery__img>a>img:hover{
+    transform: scale(1.5);
+}
+
+@media(max-width:770px){
+    .image__gallery__container{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: auto;
+    }
+}
+
+#imgModal .modal-header{
+    padding: 0;
+    border: 0;
+}
+#imgModal .modal-header .close{
+    position: absolute;
+    z-index: 2;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    color: #222;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+#imgModal .modal-header .close:focus{
+    outline: none;
+}
+
+#imgModal .modal-body img{
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+}

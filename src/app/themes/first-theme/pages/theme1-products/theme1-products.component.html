@@ -1,0 +1,26 @@
+<div class="jumbotron jumbotron-fluid my-0 cover__background">
+    <div class="container">
+      <h1 class="section__heading text-center text-white">Our Best Selling Products</h1>
+    </div>
+  </div>
+
+  <div class="jumbotron jumbotron-fluid my-0 bg-transparent product__card__container" *ngIf="_themeService?.products.length>0">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+        <ng-container *ngFor="let product of _themeService?.products;">
+          <div class="col">
+            <div class="product__card">
+              <div class="product__img"><img [src]="product?.imgUrl" alt="" class="img-fluid"></div>
+              <div class="product__details">
+                <div class="product__cetagory"><span>{{product?.itemCategory}}</span></div>
+                <div class="product__title"><span>{{product?.itemName}}</span></div>
+                <div class="product__desc"><span>{{product?.itemDescription.slice(0,80)}}</span></div>
+                <div class="product__price"><span>Rs.{{product?.itemPrice}}</span></div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+       
+      </div>
+    </div>
+  </div>

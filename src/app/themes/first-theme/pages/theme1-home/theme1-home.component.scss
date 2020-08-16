@@ -1,0 +1,53 @@
+.carousel-item{
+    max-height: 80vh;
+}
+.carousel-item>img{
+    width: 100%;
+    max-height: 80vh;
+    object-fit: cover;
+}
+.carousel__control__btns{
+    background-color: #222;
+    padding: 10px 10px 5px 10px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.section__heading{
+    margin-bottom: .75rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #373f50;
+}
+
+.service__card{
+    background-color: #045CFF;
+    // background-image: url("https://d19m59y37dris4.cloudfront.net/directory/1-5/img/photo/photo-1482463084673-98272196658a.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+    color: #fff;
+    min-height: 420px;
+    border-radius: 0.3125rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.service__card>.card__content{
+    position: absolute;
+    bottom: 0;
+    padding: 10px 30px;
+    opacity: 2;
+}
+.service__card:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.service__card>.card__content>.card__heading{
+    color: #fff;
+    font-size: calc(1.25625rem + 0.075vw);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    line-height: 1.4;    
+}

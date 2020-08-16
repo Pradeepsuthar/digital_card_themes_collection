@@ -1,0 +1,47 @@
+.map__container{
+    width: 100%;
+    min-height: 50vh;
+    max-height: 50vh;
+    object-fit: cover;
+    padding: 0;
+    margin: 0;
+}
+
+.section__heading{
+    margin-bottom: .75rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #373f50;
+}
+
+// Form
+
+input[type='text'],
+input[type='email'] {
+    width: 100%;
+    padding: 10px 20px 10px;
+    background-color: transparent;
+    border: 1px solid #999999;
+    font-weight: lighter;
+}
+input[type='text']:hover {
+    border: 1px solid #000;
+}
+input[type='email']:hover {
+    border: 1px solid #000;
+}
+textarea {
+    width: 100%;
+    padding: 10px 20px 10px;
+    background-color: transparent;
+    border: 1px solid #999999;
+    font-weight: lighter;
+}
+textarea:hover {
+    border: 1px solid #000;
+}
+.custom__btn{
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
