@@ -4,8 +4,8 @@
 
     <div class="row mt-3 mt-md-5">
       <div class="col-12 col-md-6 order-md-1 order-2 mb-4">
-        <!-- FORM -->
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+         <!-- FORM -->
+         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <input type="text" placeholder="Your Name" formControlName="fullName">
           </div>
@@ -18,9 +18,40 @@
               formControlName="message"></textarea>
           </div>
 
-          <button class="custom__btn btn-light shadow-sm" type="submit">Send</button>
+          <button class="custom__btn shadow-sm" type="submit">Send</button>
 
         </form>
+        <div class="jumbotron jumbotron-fluid bg-transparent pb-0 mb-0">
+          <div class="container pl-0">
+            <p class="nav-link media pb-1 mb-1">
+              <span class="media">
+                <span class="fa fa-map-marker mt-1 mr-2"></span>
+                <span class="media-body">
+                  {{_themeService?.data?.address?.area}} <br>
+                  {{_themeService?.data?.address?.city}}, {{_themeService?.data?.address?.state}} -
+                  ({{_themeService?.data?.address?.zipCode}}). {{_themeService?.data?.address?.country}}
+                </span>
+              </span>
+            </p>
+            <a class="nav-link media" href="tel:{{_themeService?.data?.phoneNo}}">
+              <span class="media">
+                <span class="fa fa-phone mt-1 mr-2"></span>
+                <span class="media-body">
+                  {{_themeService?.data?.phoneNo}}
+                </span>
+              </span>
+            </a>
+            <a class="nav-link media" href="tel:{{_themeService?.data?.email}}">
+              <span class="media">
+                <span class="fa fa-envelope mt-1 mr-2"></span>
+                <span class="media-body">
+                  {{_themeService?.data?.email}}
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
+       
       </div>
       <div class="col-12 col-md-6 order-md-2 order-1 map__container mb-4">
         <google-map height="100%" width="100%" [center]="center" [zoom]="zoom">

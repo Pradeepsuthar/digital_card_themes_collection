@@ -41,7 +41,9 @@ textarea:hover {
     border: 1px solid #000;
 }
 .custom__btn{
-    border: none;
+    cursor: pointer;
     padding: 10px 30px;
     border-radius: 5px;
+    background-color: #21325B;
+    color: #fff;
 }

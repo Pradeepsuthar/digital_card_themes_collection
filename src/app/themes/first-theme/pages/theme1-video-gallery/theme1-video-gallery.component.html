@@ -1,0 +1,15 @@
+<!-- Video Gallery -->
+<section class="jumbotron jumbotron-fluid my-0 bg-transparent">
+    <div class="container">
+        <h1 class="section__heading text-center">Video Gallery</h1>
+        <div class="d-flex justify-content-start flex-wrap mt-md-5">
+          <ng-container *ngFor="let videos of _themeService?.videos;">
+            <div class="pr-2">
+              <youtube-player [videoId]="videos?.youTubeLink.slice(16,videos?.youTubeLink.length)" suggestedQuality="highres"
+              class="video-player img-fluid" [width]="videoPlayerwidthSize" [height]="videoPlayerheightSize">
+            </youtube-player>
+            </div>
+          </ng-container>
+        </div>
+    </div>
+  </section>

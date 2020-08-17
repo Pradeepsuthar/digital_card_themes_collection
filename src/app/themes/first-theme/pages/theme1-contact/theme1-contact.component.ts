@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemesManagerService } from 'src/app/services/themes-manager.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-theme1-contact',
@@ -20,8 +21,7 @@ export class Theme1ContactComponent implements OnInit {
     public _themeService: ThemesManagerService
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   contactForm = new FormGroup({
     fullName: new FormControl(''),
@@ -30,9 +30,19 @@ export class Theme1ContactComponent implements OnInit {
   });
 
   onSubmit() {
-    console.log("Contact Form is", this.contactForm.value)
-    this._themeService.makeEnquiry(this.contactForm.value.fullName, this.contactForm.value.mobileNumber, this.contactForm.value.message)
-    this.contactForm.reset()
+    try {
+      console.log("Contact Form is", this.contactForm.value)
+      this._themeService.makeEnquiry(this.contactForm.value.fullName, this.contactForm.value.mobileNumber, this.contactForm.value.message)
+      Swal.fire('Thank you...', 'Your message submitted succesfully!', 'success')
+      this.contactForm.reset()
+    } catch{
+      Swal.fire(
+        'Something Went Wrong',
+        'Your message not submitted :(',
+        'error'
+      )
+    }
+
   }
 
 }

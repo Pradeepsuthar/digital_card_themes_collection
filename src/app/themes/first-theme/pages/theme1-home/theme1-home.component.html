@@ -11,7 +11,6 @@
         <img [src]="slides?.imgUrl" alt="" class="img-fluid">
       </div>
     </ng-container>
-
   </div>
   <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
     <div class="carousel__control__btns">
@@ -27,10 +26,21 @@
   </a>
 </div>
 
+<!-- About Section -->
+<section class="jumbotron jumbotron-fluid my-0 bg-transparent">
+  <div class="container">
+    <h1 class="section__heading text-center">About Us</h1>
+    <div class="mt-3 mt-md-5">
+      <h3 class="my-3"><b>{{_themeService?.data.aboutUs.title}}</b></h3>
+      <div [innerHTML]="_themeService?.data?.aboutUs?.description"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Service -->
 <section class="jumbotron jumbotron-fluid my-0 bg-transparent" *ngIf="_themeService?.services.length>0">
   <div class="container">
     <h1 class="section__heading text-center">Our Services</h1>
-
     <div class="row mt-3 mt-md-5">
       <ng-container *ngFor="let service of _themeService?.services; let i = index">
         <div class="col-sm-6 col-lg-4 px-2 px-lg-3 mb-3 mb-lg-0 aos-init aos-animate">
@@ -42,39 +52,6 @@
           </div>
         </div>
       </ng-container>
-
-
-      <!-- <div class="col-sm-6 col-lg-4 px-2 px-lg-3 mb-3 mb-lg-0 aos-init aos-animate">
-        <div class="service__card shadow"
-          style="background-image: url(https://d19m59y37dris4.cloudfront.net/directory/1-5/img/photo/photo-1522771739844-6a9f6d5f14af.jpg);">
-
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4 px-2 px-lg-3 mb-3 mb-lg-0 aos-init aos-animate">
-        <div class="service__card shadow"
-          style="background-image: url(https://d19m59y37dris4.cloudfront.net/directory/1-5/img/photo/photo-1482463084673-98272196658a.jpg);">
-
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4 px-2 px-lg-3 mb-3 mb-lg-0 aos-init aos-animate">
-        <div class="service__card shadow"
-          style="background-image: url(https://d19m59y37dris4.cloudfront.net/directory/1-5/img/photo/photo-1512917774080-9991f1c4c750.jpg);">
-          <h5 class="card__heading">Hedaing</h5>
-        </div>
-      </div> -->
     </div>
-  </div>
-</section>
-
-<!-- Image Gallery -->
-<section class="jumbotron jumbotron-fluid my-0 bg-transparent">
-  <div class="container d-flex justify-content-start flex-wrap">
-    <ng-container *ngFor="let videos of _themeService?.videos;">
-      <div class="pr-2">
-        <youtube-player [videoId]="videos?.youTubeLink.slice(16,videos?.youTubeLink.length)" suggestedQuality="highres"
-        class="video-player img-fluid" [width]="videoPlayerwidthSize" [height]="videoPlayerheightSize">
-      </youtube-player>
-      </div>
-    </ng-container>
   </div>
 </section>

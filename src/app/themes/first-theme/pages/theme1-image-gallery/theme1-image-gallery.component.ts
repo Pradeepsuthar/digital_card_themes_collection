@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemesManagerService } from 'src/app/services/themes-manager.service';
 
 @Component({
   selector: 'app-theme1-image-gallery',
@@ -8,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class Theme1ImageGalleryComponent implements OnInit {
 
   openModalImg:string;
-  constructor() { }
+  constructor(
+    public _themeService:ThemesManagerService
+  ) { }
 
   ngOnInit(): void {
   }

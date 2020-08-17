@@ -1,29 +1,105 @@
-<!-- ========== FOOTER ========== -->
-<footer class="bg-navy">
-  <div class="container pt-5 pb-4">
-    <div class="space-top-2 space-bottom-1 space-bottom-lg-2">
-      <div class="row justify-content-lg-between">
-        <div class="col-12 col-md-6 ml-lg-auto mb-5 mb-lg-0">
-          <!-- Logo -->
-          <div class="mb-4">
-            <a href="index.html" aria-label="Front" class="text-white"
-              *ngIf="!_themeService?.data?.brandLogo; else logoNotAvailable">
-              <b>{{_themeService?.data?.shopName}}</b>
-            </a>
-            <ng-template #logoNotAvailable>
-              <a href="index.html" aria-label="Front">
-                <img class="brand__logo" [src]="_themeService?.data?.brandLogo" alt="Logo">
-              </a>
-            </ng-template>
-          </div>
-          <!-- End Logo -->
+<div class="jumbotron jumbotron-fluid my-0 py-md-5 bg-light">
+  <div class="container py-0 d-flex justify-content-around my-0">
+    <p class="lead my-auto">Call us For any Query.</p>
+    <span class="my-auto">
+      <a href="tel:{{_themeService?.data?.phoneNo}}">
+        <img src="https://lucep.com/wp-content/uploads/2017/01/click-to-call-button.png" width="120" class="img-fluid" alt="">
+      </a>
+    </span>
+  </div>
+</div>
 
-          <!-- Nav Link -->
+<!-- ========== FOOTER ========== -->
+<footer class="jumbotron jumbotron-fluid bg-navy my-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <!-- Logo -->
+        <div class="px-0 mx-0">
+          <a href="index.html" aria-label="Front" class="text-white"
+            *ngIf="!_themeService?.data?.brandLogo; else logoNotAvailable">
+            <b>{{_themeService?.data?.shopName}}</b>
+          </a>
+          <ng-template #logoNotAvailable>
+            <a href="index.html" aria-label="Front">
+              <img class="brand__logo" [src]="_themeService?.data?.brandLogo" alt="Logo">
+            </a>
+          </ng-template>
+          <p class="nav-link media">
+            <span class="media">
+              <span class="media-body">
+                {{_themeService?.data?.metaTags?.description}}
+              </span>
+            </span>
+          </p>
+        </div>
+        <!-- End Logo -->
+
+        <!-- Social Networks -->
+        <h5 class="text-white">Follow Now</h5>
+        <ul class="list-inline my-4">
+          <li class="list-inline-item">
+            <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.facebook}}"
+              target="_blank">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.instagram}}"
+              target="_blank">
+              <i class="fa fa-instagram"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.youtube}}"
+              target="_blank">
+              <i class="fa fa-youtube"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.twitter}}"
+              target="_blank">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.linkedin}}"
+              target="_blank">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.pinterest}}"
+              target="_blank">
+              <i class="fa fa-pinterest"></i>
+            </a>
+          </li>
+        </ul>
+        <!-- End Social Networks -->
+      </div>
+      <div class="col-12 col-md-4">
+        <!-- Nav Links -->
+        <div class="px-0 mx-0">
+          <h5 class="text-white">Links</h5>
+          <ul class="nav nav-sm nav-x-0 nav-white flex-column">
+            <li class="nav-item"><a class="nav-link" [routerLink]="['../about']">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['../contact']">Contact Us</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['../products']">Products</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['../imgGallery']">Image Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['../videoGallery']">Video Gallery</a></li>
+          </ul>
+        </div>
+        <!-- End Nav Links -->
+      </div>
+      <div class="col-12 col-md-4">
+        <!-- Contact Us -->
+        <div class="px-0 mx-0">
+          <h5 class="text-white">Contact Us</h5>
           <ul class="nav nav-sm nav-x-0 nav-white flex-column">
             <li class="nav-item" *ngIf="_themeService?.data?.address?.area">
-              <p class="nav-link media">
+              <p class="nav-link media pb-1 mb-1">
                 <span class="media">
-                  <span class="fa fa-location-arrow mt-1 mr-2"></span>
+                  <span class="fa fa-map-marker mt-1 mr-2"></span>
                   <span class="media-body">
                     {{_themeService?.data?.address?.area}} <br>
                     {{_themeService?.data?.address?.city}}, {{_themeService?.data?.address?.state}} -
@@ -53,93 +129,25 @@
               </a>
             </li>
           </ul>
-          <!-- End Nav Link -->
-
-          <ul class="list-inline my-4">
-            <!-- Social Networks -->
-            <li class="list-inline-item">
-              <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.facebook}}"
-                target="_blank">
-                <i class="fa fa-facebook"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.instagram}}"
-                target="_blank">
-                <i class="fa fa-instagram"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.youtube}}"
-                target="_blank">
-                <i class="fa fa-youtube"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.twitter}}"
-                target="_blank">
-                <i class="fa fa-twitter"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.linkedin}}"
-                target="_blank">
-                <i class="fa fa-linkedin"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn btn-xs btn-icon btn-soft-light" href="{{_themeService?.data?.socialMedia?.pinterest}}"
-                target="_blank">
-                <i class="fa fa-pinterest"></i>
-              </a>
-            </li>
-            <!-- End Social Networks -->
-          </ul>
         </div>
-
-        <div class="col-6 col-md-3 mb-5 mb-lg-0">
-          <h5 class="text-white">Company</h5>
-
-          <!-- Nav Link -->
-          <ul class="nav nav-sm nav-x-0 nav-white flex-column">
-            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Careers <span class="badge badge-primary ml-1">We're
-                  hiring</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Customers</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Hire us</a></li>
-          </ul>
-          <!-- End Nav Link -->
-        </div>
-
-        <div class="col-6 col-md-3 mb-5 mb-lg-0">
-          <h5 class="text-white">Features</h5>
-
-          <!-- Nav Link -->
-          <ul class="nav nav-sm nav-x-0 nav-white flex-column">
-            <li class="nav-item"><a class="nav-link" href="#">Press</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Release notes</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Integrations</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-          </ul>
-          <!-- End Nav Link -->
-        </div>
-
-
+        <!-- End Contact us -->
       </div>
     </div>
-    <hr>
-    <div class="text-center">
-      <small class="text-muted">
-        Powered by <span><b><a href="https://splixcube.com/"
-              style="color: #fff;text-decoration: none;">Splixcube</a></b></span>
-      </small>
-    </div>
   </div>
+  <!-- Footer Text -->
+  <div class="text-center my-4">
+    <small class="text-muted">
+      Powered by <span><b><a href="https://splixcube.com/"
+            style="color: #fff;text-decoration: none;">Splixcube</a></b></span>
+    </small>
+  </div>
+  <!-- End Footer Text -->
 </footer>
 <!-- ========== END FOOTER ========== -->
 
-<div class="fixed-bottom text-right pr-3 pb-3 pr-md-5 pb-md-5">
+
+<!-- Got to share on whatsapp -->
+<div class="fixed-bottom text-right pr-3 pb-3 pr-md-5 pb-md-3">
   <a href="https://wa.me/{{_themeService?.data?.whatsappNo}}?text=I'm%20interested%20in%20your%20car%20for%20sale">
     <img src="../../../../../assets/Images/social_media_icons/whatsapp__icon.png" alt="" width="50">
   </a>

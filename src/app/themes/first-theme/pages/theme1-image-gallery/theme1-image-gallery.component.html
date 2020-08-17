@@ -1,14 +1,15 @@
 <div class="jumbotron jumbotron-fluid my-0 bg-transparent">
     <div class="container">
         <div class="image__gallery__container">
-          
-            <div class="gallery__img"
-                (click)="openModal('https://d3nn873nee648n.cloudfront.net/900x600/19033/220-SM890486.jpg')">
-                <a href="#" data-toggle="modal" data-target="#imgModal">
-                    <img src="https://d3nn873nee648n.cloudfront.net/900x600/19033/220-SM890486.jpg" class="img-fluid"
-                        alt="">
-                </a>
-            </div>
+            <ng-container *ngFor="let imgs of _themeService?.gallery;">
+                <div class="gallery__img"
+                    (click)="openModal(imgs?.imgUrl)">
+                    <a href="#" data-toggle="modal" data-target="#imgModal">
+                        <img [src]="imgs?.imgUrl" class="img-fluid"
+                            alt="">
+                    </a>
+                </div>
+            </ng-container>
            
         </div>
     </div>
