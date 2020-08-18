@@ -22,10 +22,10 @@ export class Theme1VideoGalleryComponent implements OnInit {
       this.videoPlayerwidthSize = 350;
       this.videoPlayerheightSize = 200;
     } else if (window.innerWidth > 320) {
-      this.videoPlayerwidthSize = 385;
+      this.videoPlayerwidthSize = window.innerWidth-20;
       this.videoPlayerheightSize = 200;
-    } else {
-      this.videoPlayerwidthSize = 260;
+    }else{
+      this.videoPlayerwidthSize = 310;
       this.videoPlayerheightSize = 200;
     }
   }

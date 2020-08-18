@@ -14,6 +14,9 @@ export class FirstThemeComponent implements OnInit {
     this.route.params.subscribe(res=>{
       console.log(res)
       this.selectedPage=res['page']
+      if(!this.selectedPage){
+        this.selectedPage='home'
+      }
     })
   }
 

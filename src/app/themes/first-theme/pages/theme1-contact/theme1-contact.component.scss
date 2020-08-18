@@ -47,3 +47,15 @@ textarea:hover {
     background-color: #21325B;
     color: #fff;
 }
+
+.cover__background{
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url("../../../../../assets/Images/default_product_cover_background.jpg");
+    height: 30vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    display: grid;
+    align-items: center;
+}
