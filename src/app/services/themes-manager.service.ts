@@ -24,7 +24,7 @@ export class ThemesManagerService {
   private twitterTitleMeta: string = "twitter:text:title";
   private twitterImageMeta: string = "twitter:image";
   constructor(public db:AngularFirestore,private title: Title, private meta: Meta){
-    this.domainName="pradeep"
+    this.domainName="jayneet"
     //this.setDomain() ;
     if(this.domainName){
       console.log(this.domainName)
